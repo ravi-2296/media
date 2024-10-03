@@ -1,5 +1,6 @@
 package com.social.media.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +19,7 @@ public class SocialUser {
     private Long id;
 
     @OneToOne(mappedBy = "user")
-    //@JoinColumn(name = "social_profile_id")
+    //@JoinColumn(name = "social_profile_id")@JsonIgnore
     private SocialProfile socialProfile;
 
     // One to many
