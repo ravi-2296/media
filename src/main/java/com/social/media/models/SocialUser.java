@@ -18,7 +18,7 @@ public class SocialUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     //@JoinColumn(name = "social_profile_id")@JsonIgnore
     private SocialProfile socialProfile;
 
@@ -39,4 +39,12 @@ public class SocialUser {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    // Custom setter in social user for social Profile
+    public void setSocialProfile(SocialProfile socialProfile){
+        socialProfile.setUser(this);
+        this.socialProfile = socialProfile;
+    }
+
+
 }
