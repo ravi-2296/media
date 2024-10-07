@@ -18,11 +18,12 @@ public class SocialUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToOne(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     //@JoinColumn(name = "social_profile_id")@JsonIgnore
     private SocialProfile socialProfile;
 
     // One to many
+
 
     @OneToMany(mappedBy = "socialUser")
     private List<Post> posts = new ArrayList<>();
